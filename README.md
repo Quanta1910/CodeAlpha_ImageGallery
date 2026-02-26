@@ -1,2 +1,6 @@
-# CodeAlpha_ImageGallery
-Responsive Image Gallery with category filtering, lightbox preview, next/previous navigation, keyboard controls and lazy loading built using HTML, CSS and JavaScript.
+# CodeAlpha Image Gallery
+
+🔴 Live Demo:  
+https://quanta1910.github.io/CodeAlpha_ImageGallery/
+
+Responsive Image Gallery built using HTML, CSS and JavaScript.
