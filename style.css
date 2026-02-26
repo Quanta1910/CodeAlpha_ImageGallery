@@ -1,0 +1,248 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    background: url(Media/Body-Background.jpg) no-repeat center center/cover;
+    font-family: "Jost","serif";
+}
+
+.navBar{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: transparent;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+}
+
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.nav-logo{
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-container .nav-menu{
+    display: flex;
+    text-align: center;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-container .nav-menu li a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 3px 20px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-container .nav-menu li a:hover, .nav-container .nav-menu li a.active{
+    background-color: cadetblue;
+    border: 2px solid white;
+}
+
+.navBar-toggle{
+    display: none;
+    background: transparent;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.navBar-toggle .bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width : 880px) {
+
+    .navBar{
+        backdrop-filter: none;
+    }    
+
+    .nav-container .nav-menu{
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.7rem !important;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        padding: 5rem 1.5rem;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-container .nav-menu.active{
+        display: flex;
+    }
+
+    .navBar-toggle{
+        display: block;
+        z-index: 999;
+    }
+
+    .navBar-toggle.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .navBar-toggle.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .navBar-toggle.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+@media (max-width: 480px){
+    .nav-container{
+        padding: 0 1rem;
+    }
+
+    .nav-logo{
+        font-size: 1.7rem;
+    }
+
+    .nav-container .nav-menu li a{
+        font-size: 1.2rem;
+        padding: 3px 15px;
+    }
+}
+
+main{
+    padding: 10px;
+    column-count: 4;
+  column-gap: 15px;
+}
+
+img {
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  break-inside: avoid;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1000px) {
+  main {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 700px) {
+  main {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 500px) {
+  main {
+    column-count: 1;
+  }
+}
+
+img:hover {
+  transform: scale(1.03);
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+    animation: fadeIn 0.3s ease;
+}
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    animation: zoomIn 0.3s ease;
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    font-size: 45px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.lightbox .close:hover {
+    color: cadetblue;
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); }
+    to { transform: scale(1); }
+}
+
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.prev:hover, .next:hover {
+    color: cadetblue;
+}
+
+.prev {
+    left: 30px;
+}
+
+.next {
+    right: 30px;
+}
